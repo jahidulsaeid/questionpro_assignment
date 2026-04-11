@@ -30,6 +30,11 @@
   color: #4f4634;
 }
 
+.requiredMark {
+  color: #b53b3b;
+  font-weight: 700;
+}
+
 .row input:not([type="checkbox"]),
 .row textarea,
 .row select {
@@ -43,13 +48,6 @@
 .row textarea {
   resize: vertical;
   min-height: 90px;
-}
-
-.row input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--color-primary);
-  cursor: pointer;
 }
 
 .submitButton,

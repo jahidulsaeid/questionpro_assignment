@@ -91,19 +91,13 @@ select {
 .checkboxLabel {
   align-content: center;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 8px;
   padding: 8px 10px;
-  border: 1px solid #dec9cf;
   border-radius: 10px;
   background: #fff;
-}
+  margin-bottom: 4px;
 
-.checkboxLabel input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--color-primary);
-  cursor: pointer;
 }
 
 .dangerButton {

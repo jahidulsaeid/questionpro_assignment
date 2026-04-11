@@ -77,6 +77,9 @@ pnpm build
   - required flag
   - select options (comma-separated)
 - Form schema is auto-saved to localStorage
+- UI customization:
+  - select fields use a customized dropdown icon style
+  - checkbox color is customized globally using theme color (`accent-color`)
 
 ### 3) Form Preview (`/form-preview`)
 
@@ -91,7 +94,7 @@ pnpm build
 
 ## Project Structure
 
-- `src/main.tsx`: app bootstrap + React Query provider + router
+- `src/main.tsx`: React Query provider + router
 - `src/App.tsx`: route declarations
 - `src/components/`: shared layout/navigation
 - `src/pages/`: page-level features

@@ -48,7 +48,14 @@ function FormPreviewPage() {
 
           return (
             <label key={field.id} className={styles.row}>
-              {field.label}
+              <span>
+                {field.label}
+                {field.required && (
+                  <span className={styles.requiredMark} aria-hidden="true">
+                    {" *"}
+                  </span>
+                )}
+              </span>
 
               {field.type === "textarea" && (
                 <textarea
