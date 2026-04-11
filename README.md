@@ -1,94 +1,104 @@
 # QuestionPro Frontend Assessment
 
-This project implements two independent features:
+This project contains two independent features:
 
-1. Todo List with API integration, filter/search persistence, and pagination
-2. Dynamic Form Builder with saved configuration and preview/submit flow
+1. Todo List
+2. Dynamic Form Builder
 
 ## Tech Stack
 
 - React (functional components + hooks)
 - React Router
-- React Query (@tanstack/react-query)
+- React Query (`@tanstack/react-query`)
 - TypeScript
 - CSS Modules
-- Browser localStorage for persistence
+- localStorage (state persistence)
 - JSONPlaceholder APIs
 
 ## Routes
 
-- /todos: Todo List page
-- /form-builder: Dynamic form schema creation
-- /form-preview: Render saved schema and submit values
+- `/todos` -> Todo List page
+- `/form-builder` -> Dynamic form builder page
+- `/form-preview` -> Dynamic form preview and submit page
 
-## Setup Instructions
+## Setup
 
-1. Install dependencies:
+1. Install dependencies
 
 ```bash
 pnpm install
 ```
 
-2. Run in development mode:
+2. Run development server
 
 ```bash
-pnpm run dev
+pnpm dev
 ```
 
-3. Build for production:
+3. Run lint
 
 ```bash
-pnpm run build
+pnpm lint
 ```
 
-4. Run linter:
+4. Build production bundle
 
 ```bash
-pnpm run lint
+pnpm build
 ```
 
-## Approach
+## Feature Details
 
-### Todo List
+### 1) Todo List (`/todos`)
 
-- Fetches todos from https://jsonplaceholder.typicode.com/todos
-- Fetches users from https://jsonplaceholder.typicode.com/users
-- Uses React Query to fetch/cache todo and user datasets
-- Maps each todo userId to user name
-- Filters:
-  - Search by title
-  - Filter by user
-  - Filter by status (Completed/Pending)
-- Pagination:
-  - 10 items per page
-  - Previous/Next controls
-- Persistence:
-  - Filters and search state are stored in localStorage
-  - Returning to /todos preserves state
+- Fetches todos from `https://jsonplaceholder.typicode.com/todos`
+- Fetches users from `https://jsonplaceholder.typicode.com/users`
+- Uses React Query for API fetching and caching
+- Displays each todo with:
+  - title
+  - status (`Completed` / `Pending`)
+  - mapped user name (`userId -> user.name`)
+- Supports filters:
+  - search by title
+  - filter by user
+  - filter by status
+- Supports pagination:
+  - page size: 10
+  - Previous/Next navigation
+- Persists Todo filter/search/page state in localStorage
 
-### Dynamic Form Builder
+### 2) Dynamic Form Builder (`/form-builder`)
 
-- Users can add/remove dynamic fields
-- Each field supports:
-  - Label
-  - Name
-  - Input type (text, textarea, number, select, date, checkbox)
-  - Required flag
-  - Select options (for dropdown fields)
-- Form configuration is auto-saved in localStorage
+- Add and remove dynamic fields
+- Configure field properties:
+  - label
+  - name (normalized)
+  - input type (`text`, `textarea`, `number`, `select`, `date`, `checkbox`)
+  - required flag
+  - select options (comma-separated)
+- Form schema is auto-saved to localStorage
 
-### Form Preview
+### 3) Form Preview (`/form-preview`)
 
-- Loads saved configuration from localStorage
-- Renders inputs dynamically based on field type
-- On submit:
-  - Collects all values
-  - Prints submitted data to browser console
+- Loads saved form schema from localStorage
+- Renders inputs dynamically by field type
+- On submit, prints submitted form values in browser console
+
+## Persistence Keys
+
+- `task_builder.todo.filters.v1`
+- `task_builder.form.fields.v1`
 
 ## Project Structure
 
-- src/components: shared layout/navigation
-- src/pages: feature pages (todos, builder, preview)
-- src/constants.ts: keys/defaults/page size
-- src/lib.storage.ts: localStorage helpers
-- src/types.ts: shared TypeScript models
+- `src/main.tsx`: app bootstrap + React Query provider + router
+- `src/App.tsx`: route declarations
+- `src/components/`: shared layout/navigation
+- `src/pages/`: page-level features
+  - `TodosPage.tsx`
+  - `FormBuilderPage.tsx`
+  - `FormPreviewPage.tsx`
+- `src/constants/storageKeys.ts`: storage keys, defaults, todo page size
+- `src/lib/localStorage.ts`: localStorage helper utilities
+- `src/types/todo.ts`: todo-related types
+- `src/types/form.ts`: form-related types
