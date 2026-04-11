@@ -1,0 +1,67 @@
+.container {
+  background: rgb(255 255 255 / 85%);
+  border: 1px solid #dddad1;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 20px 30px rgb(66 58 21 / 9%);
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+}
+
+.subText {
+  margin-top: 8px;
+  color: #62573f;
+}
+
+.form {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4f4634;
+}
+
+.row input:not([type="checkbox"]),
+.row textarea,
+.row select {
+  border: 1px solid #d9ceba;
+  border-radius: 10px;
+  padding: 10px;
+  font: inherit;
+  background: #fff;
+}
+
+.row textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.submitButton,
+.linkButton {
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 700;
+  width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+}
